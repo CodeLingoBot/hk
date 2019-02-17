@@ -22,7 +22,7 @@ func (d *DB) Ingress() error {
 	return d.client.Put(d.IsStarterPlan(), "/"+d.Id+"/ingress", nil)
 }
 
-// Whether the DB is a starter plan and should communicate with the starter API.
+// IsStarterPlan: Whether the DB is a starter plan and should communicate with the starter API.
 // Plan names ending in "dev" or "basic" are currently handled by the starter
 // API while all others are handled by the production API.
 func (d *DB) IsStarterPlan() bool {

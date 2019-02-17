@@ -76,7 +76,7 @@ func (c *Client) Put(isStarterPlan bool, path string, v interface{}) error {
 	return c.APIReq(isStarterPlan, "PUT", path, v)
 }
 
-// Creates a new DB struct initialized with this Client.
+// NewDB: Creates a new DB struct initialized with this Client.
 func (c *Client) NewDB(id, plan string) DB {
 	return DB{
 		Id:     id,
@@ -85,7 +85,7 @@ func (c *Client) NewDB(id, plan string) DB {
 	}
 }
 
-// Generates an HTTP request for the Heroku Postgres API, but does not
+// NewRequest: Generates an HTTP request for the Heroku Postgres API, but does not
 // perform the request. The request's Accept header field will be
 // set to:
 //
@@ -136,7 +136,7 @@ func (c *Client) NewRequest(isStarterPlan bool, method, path string) (*http.Requ
 	return req, nil
 }
 
-// Sends a Heroku Postgres API request and decodes the response into v. As
+// APIReq: Sends a Heroku Postgres API request and decodes the response into v. As
 // described in DoReq(), the type of v determines how to handle the response
 // body.
 func (c *Client) APIReq(isStarterPlan bool, meth, path string, v interface{}) error {
@@ -147,7 +147,7 @@ func (c *Client) APIReq(isStarterPlan bool, meth, path string, v interface{}) er
 	return c.DoReq(req, v)
 }
 
-// Submits an HTTP request, checks its response, and deserializes
+// DoReq: Submits an HTTP request, checks its response, and deserializes
 // the response into v. The type of v determines how to handle
 // the response body:
 //
